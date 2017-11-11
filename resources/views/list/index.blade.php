@@ -90,7 +90,7 @@
         </div>
 
         <div>
-            <p>남은 금액 : {{ $deposits_total - $total }}</p>
+            <p>남은 금액 : {{ number_format($deposits_total - $total) }}</p>
         </div>
 
         <div class="text-center">
