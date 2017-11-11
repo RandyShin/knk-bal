@@ -16,7 +16,7 @@
             <div>
                 <a href="reset.php">reset</a>
             </div>
-            <input type="text" class="form-control" name="company" value="smi">
+            <input type="text" class="form-control" name="company" value="knk">
         </div>
     </div>
     <div class="row">
