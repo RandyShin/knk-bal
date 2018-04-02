@@ -38,21 +38,23 @@ class BalanceController extends Controller
     }
     public function index(Request $request)
     {
-
+		ini_set('memory_limit', '-1');
         $params = $request->all();
 
         $cdrs = $this->queryList();
         $cdrs = $cdrs->orderBy('calldate', 'desc')->paginate(15);
+		
 
         $prices = Cdr::where('dcontext', '=', 'knk_rulematch')
             ->whereRaw('LENGTH(dst) != 4')
             ->get();
 
-
+		
         $cnt = $cdrs->total();
+		
 
         $this->getTotal();
-
+	
         // get total price result
         $total = $this->total;
 
@@ -98,11 +100,12 @@ class BalanceController extends Controller
 
     private function getTotal()
     {
+		ini_set('memory_limit', '-1');
         $prices = Cdr::where('dcontext', '=', 'knk_rulematch')
             ->whereRaw('LENGTH(dst) != 4')
             ->where('calldate', '>=', '2017-11-12 00:00:00')
             ->get();
-
+		
         $this->total = 0;
 
         foreach ($prices as $price)
